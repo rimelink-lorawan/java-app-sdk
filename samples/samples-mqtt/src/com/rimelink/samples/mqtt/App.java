@@ -53,7 +53,7 @@ public class App {
 	}
 
 	/**
-	 * 字节转 16 进制字符
+	 * byte array to hex string	 
 	 * @param bytes
 	 * @return
 	 */
