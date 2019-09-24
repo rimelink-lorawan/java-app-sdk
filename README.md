@@ -13,6 +13,7 @@ JDK 1.8 及以上
 - org.eclipse.paho.client.mqttv3-1.1.1.jar
 
 可从这里下载：[https://github.com/rimelink-lorawan/java-app-sdk/releases](https://github.com/rimelink-lorawan/java-app-sdk/releases)
+其中 Demo.rar 包括了本示例全部包与代码。
 
 #### 创建测试使用类 Test.java
 在依赖包的同一目录下创建 Test.java
