@@ -57,5 +57,14 @@ public abstract class UplinkHandler implements EventHandler {
                 _client.getWordWildcard(),
                 "rx"
             });
+    	
+    	_client.subscribe(new String[]{
+                "application",
+                _appId,
+                "device",
+                _client.getWordWildcard(),
+                "event",
+                "up"
+        });
     }
 }

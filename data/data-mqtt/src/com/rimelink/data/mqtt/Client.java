@@ -161,7 +161,8 @@ public class Client extends AbstractClient {
                 if (tokens.length < 4) return;  
                 	 
                 String type = tokens[tokens.length - 1];
-				if ("rx".equals(type)) { 					 
+                if ("rx".equals(type) || "up".equals(type)) {
+                    version = "up".equals(type) ? 3 : 0;				 
 	                Map kvmap = MAPPER.readValue(message.getPayload(), Map.class);
 	                
 	                String devEUI = kvmap.get("devEUI").toString();    
@@ -282,6 +283,8 @@ public class Client extends AbstractClient {
     	send(_devEUI, _data, _port, false);
     }
     
+    private int version = 0;
+    
     @Override
     public void send(String _devEUI, byte[] _data, int _port, boolean _confirmed) throws Exception {
     	Map<String, Object> downData = new HashMap<String, Object>();
@@ -291,8 +294,12 @@ public class Client extends AbstractClient {
         downData.put("data", Base64.getEncoder().encode(_data));
         
         byte[] payload = MAPPER.writeValueAsBytes(downData);
-        mqttClient.publish("application/" + appId + "/node/" + _devEUI + "/tx", payload, 0, false);
-        mqttClient.publish("application/" + appId + "/device/" + _devEUI + "/tx", payload, 0, false);
+        if(version < 3) {
+            mqttClient.publish("application/" + appId + "/node/" + _devEUI + "/tx", payload, 0, false);
+            mqttClient.publish("application/" + appId + "/device/" + _devEUI + "/tx", payload, 0, false);
+        }else {
+            mqttClient.publish("application/" + appId + "/device/" + _devEUI + "/command/down", payload, 0, false);
+        }
     }
 
     @Override
