@@ -288,7 +288,7 @@ public class Client extends AbstractClient {
     @Override
     public void send(String _devEUI, byte[] _data, int _port, boolean _confirmed) throws Exception {
     	Map<String, Object> downData = new HashMap<String, Object>();
-        downData.put("reference", "rimelink");
+        downData.put("dev_eui", _devEUI);
         downData.put("confirmed", _confirmed);
         downData.put("fPort", _port);
         downData.put("data", Base64.getEncoder().encode(_data));

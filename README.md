@@ -4,6 +4,15 @@
 ### 环境说明
 JDK 1.8 及以上
 
+
+# changelog
+## 2025-02-26
+更新下发消息体兼容 V3、V4。
+
+ChirpStack V4 中，下发消息结构体规则有点变化，详细情况请参考[ChirpStack V4 数据下发主题](https://mp.weixin.qq.com/s/tfPhIlo63demt_Gr3CoEbw)
+
+
+
 ### 使用示例
 #### SDK 及其依赖包
 - com.rimelink.data.mqtt.sdk-1.0.jar
